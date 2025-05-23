@@ -1,0 +1,69 @@
+{
+  "name": "ernicss",
+  "displayName": "ernicss",
+  "publisher": "felix-gehring",
+  "author": "dev@felix-gehring",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.99.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Erni CSS",
+      "properties": {
+        "erni": {
+          "type": "object",
+          "description": "Erni CSS extension settings",
+          "properties": {
+            "utility": {
+              "type": "object",
+              "description": "Utility CSS settings",
+              "properties": {
+                "css": {
+                  "type": "string",
+                  "default": "",
+                  "description": "Path to utility.css relative to workspace root or using ${workspaceFolder}. E.g. './src/utilities.css' or '${workspaceFolder}/src/utilities.css'"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "ernicss.showUtilityCssPath",
+        "title": "Show Utility CSS Path"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.99.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  }
+}
